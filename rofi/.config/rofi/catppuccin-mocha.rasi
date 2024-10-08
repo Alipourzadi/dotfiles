@@ -1,0 +1,11 @@
+* {
+    background:     #1E1E2E;   /* Base background color */
+    background-alt: #313244;   /* Alternate background */
+    foreground:     #CDD6F4;   /* Text color */
+    selected:       #89B4FA;   /* Highlighted selection */
+    active:         #B4BEFE;   /* Active element */
+    urgent:         #F38BA8;   /* Urgent element color */
+    error:          #F38BA8;   /* Error color */
+    radius:         10px;      /* Border radius */
+}
+

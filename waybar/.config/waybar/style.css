@@ -1,0 +1,52 @@
+@define-color foreground #c6d0f5; /* Text color */
+@define-color foreground-inactive #6c7086; /* Muted text */
+@define-color background #1e1e2e; /* Base background */
+@define-color background-alt #313244; /* Alternate background */
+
+/* Global styles */
+* {
+  font-family: Jetbrains mono;
+  font-size: 14px;
+  padding: 0;
+}
+
+/* Waybar styles */
+#waybar {
+  color: @foreground;
+  background-color: @background;
+}
+
+/* Workspaces button styles */
+#workspaces button {
+  padding-left: 1em;
+  border-radius: 0px;
+  padding-right: 1.3em;
+}
+
+#workspaces button.empty {
+  color: @foreground-inactive;
+}
+
+#workspaces button:hover,
+#workspaces button.focused {
+  background: @background-alt;
+}
+
+/* Module styles */
+#wireplumber,
+#bat,
+#tray,
+#usage,
+#net {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: 0.3em;
+}
+
+/* Additional module margin adjustments */
+#battery,
+#memory,
+#language,
+#network {
+  margin-right: 0.8em;
+}

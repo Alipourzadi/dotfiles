@@ -1,0 +1,4 @@
+{
+  "diagnostics.globals": ["vim", "show_diagnostics_with_border"],
+  "diagnostics.disable": ["undefined-global", "undefined-doc-name"]
+}
