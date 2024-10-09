@@ -13,11 +13,11 @@ vim.cmd("set nowrap")
 vim.cmd("set cursorline")
 
 vim.filetype.add({
-  extension = {
-    mdx = "markdown.mdx",
-  },
-  filename = {},
-  pattern = {},
+	extension = {
+		mdx = "markdown.mdx",
+	},
+	filename = {},
+	pattern = {},
 })
 
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>", { silent = true })
@@ -35,30 +35,30 @@ vim.keymap.set("n", "<leader>Y", '"+Y', { silent = true })
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 
 vim.keymap.set("n", "<leader>xb", function()
-  local bufs = vim.api.nvim_list_bufs()
-  local current_buf = vim.api.nvim_get_current_buf()
-  for _, i in ipairs(bufs) do
-    if i ~= current_buf then
-      vim.api.nvim_buf_delete(i, {})
-    end
-  end
+	local bufs = vim.api.nvim_list_bufs()
+	local current_buf = vim.api.nvim_get_current_buf()
+	for _, i in ipairs(bufs) do
+		if i ~= current_buf then
+			vim.api.nvim_buf_delete(i, {})
+		end
+	end
 end, { silent = true })
 
 vim.keymap.set("n", "<leader>i", function()
-  -- If we find a floating window, close it.
-  local found_float = false
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    if vim.api.nvim_win_get_config(win).relative ~= "" then
-      vim.api.nvim_win_close(win, true)
-      found_float = true
-    end
-  end
+	-- If we find a floating window, close it.
+	local found_float = false
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		if vim.api.nvim_win_get_config(win).relative ~= "" then
+			vim.api.nvim_win_close(win, true)
+			found_float = true
+		end
+	end
 
-  if found_float then
-    return
-  end
+	if found_float then
+		return
+	end
 
-  vim.diagnostic.open_float(nil, { border = "rounded", focus = false, scope = "cursor" })
+	vim.diagnostic.open_float(nil, { border = "rounded", focus = false, scope = "cursor" })
 end, { noremap = true, silent = true, desc = "Toggle Diagnostics" })
 
 vim.opt.fillchars = { eob = " " }
