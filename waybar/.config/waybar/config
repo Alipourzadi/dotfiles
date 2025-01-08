@@ -1,7 +1,8 @@
+
 {
     "layer": "top",
     "position": "top",
-    "height": 8,
+    "height": 4,
     "spacing": 5,
 
     "modules-left": ["sway/workspaces"],
@@ -23,7 +24,7 @@
 
     "group/bat": {
         "orientation": "horizontal",
-        "modules": ["battery","custom/separator", "backlight"]
+        "modules": ["backlight","custom/separator","battery"]
     },
 
     "group/net": {
@@ -32,7 +33,7 @@
     },
 
     "clock": {
-        "format": "{:%d.%m.%Y | %H:%M}"
+        "format": "{:%H:%M}"
     },
 
     "wireplumber": {
@@ -43,13 +44,13 @@
 
     "battery": {
         "bat": "BAT0",
-        "interval": 60,
+        "interval": 30,
         "format": "{icon}  {capacity}%",
         "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
     },
 
     "backlight": {
-        "format": " \udb80\udcdf  {percent}%"
+        "format": "\udb80\udcdf  {percent}%"
     },
 
     "memory": {
@@ -86,7 +87,29 @@
     },
 
     "tray": {
-        "icon-size": 16,
+        "icon-size": 18,
         "spacing": 16
-    }
+    },
+    "custom/notification": {         
+      "tooltip": false,
+      "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+    },
 }
+
+

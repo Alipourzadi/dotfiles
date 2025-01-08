@@ -5,7 +5,7 @@ set $down j
 set $up k
 set $right l
 
-set $term wezterm
+set $term alacritty
 
 set $menu dmenu_path | wmenu | xargs swaymsg exec --
 # Notification Daemon
@@ -31,11 +31,11 @@ set $ws10 10:
 
 hide_edge_borders none
 font pango:UbuntuMono Nerd Font 8
-output * bg $HOME/Downloads/Wallpaper/cat/walls-catppuccin-mocha/crane.png fill
+output * bg $HOME/.config/sway/wallpaper.jpg fill
 
 # Gaps
-gaps outer 8
-gaps inner 12
+gaps outer 2
+gaps inner 2
 
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
@@ -101,7 +101,12 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
 
 ## Log Out, Shutdown, Reboot
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag -t warning "Terminus" \
+-m "Exit sway? This will end your current Wayland session." \
+-B "Exit now" "swaymsg exit" \
+-B "Suspend" "systemctl suspend && pkill swaynag" \
+-B "Reboot" "systemctl reboot" \
+-B "Power off" "systemctl poweroff" \
 bindsym $mod+Shift+p exec "systemctl poweroff"
 bindsym $mod+Shift+r exec "systemctl reboot"
 

@@ -5,11 +5,23 @@ return {
   config = function()
     require("ibl").setup({
       exclude = {
-        filetypes = { "help", "dashboard", "packer", "NvimTree", "Trouble", "TelescopePrompt", "Float" },
+        filetypes = {
+          "telescope",
+          "help",
+          "dashboard",
+          "packer",
+          "NvimTree",
+          "Trouble",
+          "TelescopePrompt",
+          "Float",
+          "neo-tree",
+        },
         buftypes = { "terminal", "nofile", "telescope" },
       },
       indent = {
-        char = "│",
+        char = ".",
+        smart_indent_cap = true,
+        repeat_linebreak = true,
       },
       scope = {
         enabled = false,

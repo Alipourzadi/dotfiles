@@ -1,25 +1,46 @@
+[general]
 import = [
   "~/.config/alacritty/catppuccin-mocha.toml"
 ]
 
+live_config_reload = true
+working_directory = "None"
+
 [env]
 TERM = "xterm-256color"
+
+[window.padding]
+x = 16
+y = 12
 
 [font]
 size = 10
 
+[font.normal]
+family = "FiraCode Nerd Font Propo"
+
 [font.bold]
-family = "FiraCode Nerd Font Med"
-style = "Bold"
+family = "FiraCode Nerd Font Propo"
 
 [font.bold_italic]
-family = "FiraCode Nerd Font Med"
-style = "Bold Italic"
+family = "FiraCode Nerd Font Propo"
 
 [font.italic]
-family = "FiraCode Nerd Font Med"
-style = "Italic"
+family = "FiraCode Nerd Font Propo"
 
-[font.normal]
-family = "FiraCode Nerd Font Med"
-style = "Regular"
+[cursor]
+thickness = 0.15
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Off"
+shape = "Block"
+
+[cursor.vi_mode_style]
+blinking = "On"
+shape = "Block"
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+

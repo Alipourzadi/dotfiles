@@ -2,7 +2,7 @@
 
 set $mod Mod4
 
-bindsym $mod+Return exec --no-startup-id wezterm
+bindsym $mod+Return exec --no-startup-id kitty
 
 #####################
 ##    Workspace    ##
@@ -128,8 +128,8 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
-bindsym Mod1+Tab workspace next
-bindsym Mod1+shift+Tab workspace prev
+bindsym $mod+Tab workspace next
+bindsym $mod+shift+Tab workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -226,7 +226,7 @@ bindsym $mod+shift+Print --release   exec --no-startup-id flameshot gui
 for_window [class="^.*"] border pixel 1
 
 #################
-##    Modes    ##
+##  Modes    ##
 #################
 
 # System mode
@@ -274,11 +274,15 @@ mode "resize" {
 #####################
 
 exec_always "setxkbmap -model pc104 -layout us,ir -variant ,, -option grp:alt_shift_toggle"
-exec --no-startup-id nm-applet
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-exec --no-startup-id picom
+exec_always --no-startup-id xset r rate 300 35 # Set initial delay 300ms, repeat 35ms
+
+
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id dex --autostart --environment i3
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+exec_always --no-startup-id picom
 exec_always killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh &
-exec_always feh --bg-scale ~/Downloads/Wallpaper/tetris.png
+exec_always feh --bg-scale ~/Downloads/Wallpaper/cat/walls-catppuccin-mocha/cabin-5.png
