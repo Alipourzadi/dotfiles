@@ -1,38 +1,34 @@
 return {
-  "stevearc/conform.nvim",
-
-  config = function()
-    local conform = require("conform")
-
-    conform.setup({
-      format_on_save = {
-        -- Enable format on save
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
-
-      formatters_by_ft = {
-        lua = { "stylua" },
-        javascript = { "prettierd" },
-        typescript = { "prettierd" },
-        javascriptreact = { "prettierd" },
-        typescriptreact = { "prettierd" },
-        python = { "black" },
-      },
-    })
-
-    -- Keep your existing save keybinding
-    vim.keymap.set("n", "<C-s>", ":w<CR>", { silent = true })
-
-    -- Optional: Add a keybinding for manual formatting
-    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-      conform.format({
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 500,
-      })
-    end, { desc = "Format file or range (in visual mode)" })
-  end,
+	"stevearc/conform.nvim",
+	config = function()
+		local conform = require("conform")
+		conform.setup({
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_fallback = true,
+			},
+			formatters_by_ft = {
+				lua = { "stylua" },
+				javascript = { "prettierd" },
+				typescript = { "prettierd" },
+				javascriptreact = { "prettierd" },
+				typescriptreact = { "prettierd" },
+				python = { "black" },
+				json = { "prettierd" },
+				toml = { "pyproject-fmt" },
+				html = { "prettierd" },
+				css = { "prettierd" },
+			},
+		})
+		vim.keymap.set("n", "<C-s>", ":w<CR>", { silent = true })
+		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+			conform.format({
+				lsp_fallback = true,
+				async = false,
+				timeout_ms = 500,
+			})
+		end, { desc = "Format file or range (in visual mode)" })
+	end,
 }
 -- return {
 --   "nvimtools/none-ls.nvim",

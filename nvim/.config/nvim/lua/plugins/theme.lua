@@ -1,57 +1,46 @@
--- return {
---   "sainnhe/gruvbox-material",
---   lazy = false,
---   priority = 1000,
---   config = function()
---     vim.g.gruvbox_material_enable_italic = false
---     vim.g.gruvbox_material_transparent_background = 0
---     vim.g.gruvbox_material_float_style = "dim"
---     vim.g.gruvbox_material_statusline_style = "mix"
---     vim.g.gruvbox_material_background = "hard"
---
---     vim.cmd.colorscheme("gruvbox-material")
---   end,
--- }
--- lua/plugins/rose-pine.lua
---[[ return {
-  "oxfist/night-owl.nvim",
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require("night-owl").setup({
-      bold = true,
-      italics = false,
-      underline = true,
-      undercurl = true,
-      transparent_background = false,
-    })
-    vim.cmd.colorscheme("night-owl")
-  end,
-} ]]
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
 	priority = 1000,
 	config = function()
 		require("catppuccin").setup({
-			flavour = "mocha",
-			background = { light = "latte", dark = "mocha" },
-			transparent_background = true,
-			floating_border = true,
-			show_end_of_buffer = true,
-			term_colors = true,
-			no_italic = true,
-			no_bold = true,
-			no_underline = true,
+			flavour = "macchiato", -- latte, frappe, macchiato, mocha
+			background = { -- :h background
+				light = "latte",
+				dark = "mocha",
+			},
+			transparent_background = true, -- disables setting the background color.
+			show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+			term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
+			dim_inactive = {
+				enabled = false, -- dims the background color of inactive window
+				shade = "dark",
+				percentage = 0.15, -- percentage of the shade to apply to the inactive window
+			},
+			no_italic = false, -- Force no italic
+			no_bold = false, -- Force no bold
+			no_underline = false, -- Force no underline
+			styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+				comments = {}, -- Change the style of comments
+				conditionals = {},
+				loops = {},
+				functions = {},
+				keywords = {},
+				strings = {},
+				variables = {},
+				numbers = {},
+				booleans = {},
+				properties = {},
+				types = {},
+				operators = {},
+				-- miscs = {}, -- Uncomment to turn off hard-coded styles
+			},
+			color_overrides = {},
+			custom_highlights = {},
 			default_integrations = true,
 			integrations = {
-				cmp = {
-					enabled = true,
-					border = {
-						completion = true,
-						documentation = true,
-					},
-				},
+				cmp = true,
+				gitsigns = true,
 				native_lsp = {
 					enabled = true,
 					virtual_text = {
@@ -72,33 +61,17 @@ return {
 						background = true,
 					},
 				},
-				indent_blankline = {
-					enabled = true,
-					scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
-					colored_indent_levels = true,
-				},
-				alpha = true,
+				nvimtree = true,
 				treesitter = true,
-				markdown = true,
-				neotree = true,
-				fidget = false,
-				mason = true,
-				window_picker = false,
-				lsp_trouble = false,
-				gitsigns = true,
-				telescope = {
+				notify = false,
+				mini = {
 					enabled = true,
+					indentscope_color = "",
 				},
+				-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 			},
 		})
-		vim.cmd.colorscheme("catppuccin")
-		-- local mocha = require("catppuccin.palettes").get_palette("mocha")
 
-		-- =========================
-		-- UI Elements
-		-- =========================
-		-- vim.api.nvim_set_hl(0, "Pmenu", { bg = mocha.base })
-		-- vim.api.nvim_set_hl(0, "PmenuSel", { fg = mocha.text, bg = mocha.base, bold = true })
-		-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = mocha.base })
+		vim.cmd.colorscheme("catppuccin-macchiato")
 	end,
 }

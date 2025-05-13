@@ -24,11 +24,6 @@ return {
 	},
 
 	config = function()
-		vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-		vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-		vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-		vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
-
 		require("neo-tree").setup({
 			close_if_last_window = true,
 			enable_git_status = true,
@@ -44,8 +39,8 @@ return {
 					padding = 0,
 				},
 				indent = {
-					indent_size = 2,
-					padding = 1,
+					-- indent_size = 2,
+					-- padding = 1,
 					with_markers = true,
 					indent_marker = "│",
 					last_indent_marker = "└",
@@ -54,8 +49,8 @@ return {
 					expander_expanded = "",
 				},
 				icon = {
-					folder_closed = "",
-					folder_open = "",
+					folder_closed = "󰉋",
+					folder_open = "",
 					folder_empty = "",
 					default = "*",
 					highlight = "NeoTreeFileIcon",
@@ -245,7 +240,7 @@ return {
 			},
 		})
 		vim.keymap.set("n", "<C-n>", function()
-			vim.cmd(":Neotree toggle filesystem reveal left")
+			vim.cmd(":Neotree toggle left")
 		end, { silent = true })
 	end,
 }
