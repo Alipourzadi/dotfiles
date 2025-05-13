@@ -4,8 +4,8 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "Catppuccin Mocha (Gogh)"
 
-config.font_size = 10
-config.line_height = 1
+config.font_size = 14
+config.line_height = 1.1
 config.font = wezterm.font_with_fallback({
 	"JetBrainsMonoNL NF",
 	"Vazir Code Hack",
