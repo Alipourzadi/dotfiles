@@ -14,28 +14,28 @@ exec swaync
 
 include /etc/sway/config-vars.d/*
 
-set $ws1 1:
-set $ws2 2:
-set $ws3 3:
-set $ws4 4:󱄤
-set $ws5 5:
-set $ws6 6:
-set $ws7 7:
-set $ws8 8:
-set $ws9 9:
-set $ws10 10:
+set $ws1 1:T
+set $ws2 2:W
+set $ws3 3:F
+set $ws4 4:M
+set $ws5 5:D
+set $ws6 6:G
+set $ws7 7:I
+set $ws8 8:C
+set $ws9 9:K
+set $ws10 10:S
 
 #####################
 ##    Interface    ##
 #####################
 
 hide_edge_borders none
-font pango:UbuntuMono Nerd Font 8
-output * bg $HOME/.config/sway/wallpaper.jpg fill
+font pango:DejaVuSansM Nerd Font Propo 8
+output * bg $HOME/.config/backgrounds/wall.png fill
 
 # Gaps
-gaps outer 2
-gaps inner 2
+gaps outer 0
+gaps inner 0
 
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
@@ -209,10 +209,10 @@ bindsym $mod+shift+Print --release   exec --no-startup-id flameshot gui
 ##    Windows Behavior    ##
 ############################
 
-for_window [class="^.*"] border pixel 1
-for_window [class="confirm"] floating enable
-for_window [class="dialog"] floating enable
-for_window [class="error"] floating enable
+for_window [class="^.*"] border pixel 0
+# for_window [class="confirm"] floating enable
+# for_window [class="dialog"] floating enable
+# for_window [class="error"] floating enable
 
 
 #################
@@ -242,6 +242,11 @@ mode "resize" {
 #####################
 
 exec_always "setxkbmap -model pc104 -layout us,ir -variant ,, -option grp:alt_shift_toggle"
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 
 bar {
      swaybar_command waybar
