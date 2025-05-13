@@ -95,6 +95,12 @@ input type:keyboard {
     repeat_delay 300
 }
 
+input "type:touchpad" {
+  dwt enabled
+  tap enabled
+  middle_emulation enabled
+}
+
 bindsym $mod+Return exec $term
 
 bindsym $mod+Shift+q kill
