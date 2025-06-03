@@ -1,6 +1,4 @@
-export VOLTA_HOME="$HOME/.volta"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
@@ -53,3 +51,5 @@ alias cpuSetLow='echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/
 
 source /home/excalibur/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
