@@ -31,11 +31,11 @@ set $ws10 10:S
 
 hide_edge_borders none
 font pango:DejaVuSansM Nerd Font Propo 8
-output * bg $HOME/.config/backgrounds/wall.png fill
+output * bg $HOME/.config/sway/wallhaven-5ydwp7.jpg fill
 
 # Gaps
-gaps outer 0
-gaps inner 0
+gaps outer 10
+gaps inner 10
 
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
@@ -115,7 +115,7 @@ bindsym $mod+Shift+e exec swaynag -t warning "Terminus" \
 -B "Power off" "systemctl poweroff" \
 bindsym $mod+Shift+p exec "systemctl poweroff"
 bindsym $mod+Shift+r exec "systemctl reboot"
-
+bindsym $mod+Shift+B exec swaylock
 
 ## Layout Modes
 bindsym $mod+s layout stacking
@@ -206,10 +206,11 @@ bindsym XF86MonBrightnessDown exec light -U 5; exec notify-send 'brightness down
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
-## Screenshot
-bindsym Print --release   exec --no-startup-id flameshot full -c
-bindsym $mod+Print --release   exec --no-startup-id flameshot full -p "$XDG_PICTURES_DIR/screenshots/"
-bindsym $mod+shift+Print --release   exec --no-startup-id flameshot gui
+# Fullscreen screenshot
+bindsym Print exec grim ~/Pictures/screenshot-$(date +%s).png | wl-copy
+
+# Area screenshot
+bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%s).png | wl-copy
 
 ############################
 ##    Windows Behavior    ##
@@ -247,12 +248,14 @@ mode "resize" {
 ##    Autostart    ##
 #####################
 
-exec_always "setxkbmap -model pc104 -layout us,ir -variant ,, -option grp:alt_shift_toggle"
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec hash dbus-update-activation-environment 2>/dev/null && \
-     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec_always {
+  swayidle -w \
+    timeout 300 'swaylock' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock'
+}
 
-for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 
 bar {
      swaybar_command waybar
