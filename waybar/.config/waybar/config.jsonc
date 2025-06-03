@@ -1,0 +1,99 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 35,
+
+  "modules-left": [
+    "clock",
+    "sway/language",
+    "temperature",
+    "cpu",
+    "memory",
+    "tray"
+  ],
+  "modules-center": ["sway/workspaces"],
+  "modules-right": [
+    "backlight",
+    "pulseaudio",
+    "network",
+    "bluetooth",
+    "battery"
+  ],
+
+  "sway/workspaces": {
+    "format": "{name}",
+    "disable-scroll": true
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y | %H:%M:%S}"
+  },
+
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": " {}%",
+    "tooltip": false
+  },
+
+  "temperature": {
+    "hwmon-path": "/sys/class/thermal/thermal_zone0/temp",
+    "critical-threshold": 80,
+    "format": "󰔏 {temperatureC}°C",
+    "tooltip": false,
+    "states": {
+      "warning": 65,
+      "critical": 80
+    }
+  },
+
+  "pulseaudio": {
+    "format": "󰕾 {volume}%",
+    "scroll-step": 5,
+    "format-muted": "󰖁 muted",
+    "on-click": "pavucontrol"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "󰃠 {percent}%",
+    "scroll-step": 5
+  },
+
+  "sway/language": {
+    "format": " {}"
+  },
+
+  "network": {
+    "format-wifi": "󰖩 {essid}",
+    "format-ethernet": "󰈀 {ifname}",
+    "format-disconnected": "󰖪",
+    "tooltip-format": "IP: {ipaddr}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
+    "on-click": "nm-connection-editor"
+  },
+
+  "bluetooth": {
+    "format": "󰂯 {status}",
+    "format-connected": "󰂱 {device_alias}",
+    "format-disabled": "󰂲",
+    "on-click": "blueman-manager"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}{capacity: >3}%",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  }
+}
