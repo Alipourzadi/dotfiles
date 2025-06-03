@@ -1,0 +1,52 @@
+# Catppuccin Mocha theme for swaylock
+# Save this as ~/.config/swaylock/config
+
+# Catppuccin Mocha color palette
+# Base colors
+color=1e1e2e  # Base background
+
+# Ring colors
+ring-color=cba6f7     # Mauve - default ring
+key-hl-color=89b4fa   # Blue - key highlight
+line-color=00000000   # Transparent line
+line-uses-ring
+
+# Inside colors  
+inside-color=313244      # Surface0 - inside circle
+inside-clear-color=a6e3a1  # Green - after clear
+inside-caps-lock-color=f9e2af  # Yellow - caps lock
+inside-ver-color=89b4fa  # Blue - during verification
+inside-wrong-color=f38ba8  # Red - wrong password
+
+# Ring verification/error states
+ring-clear-color=a6e3a1    # Green ring when cleared
+ring-caps-lock-color=fab387  # Peach ring for caps lock  
+ring-ver-color=89b4fa      # Blue ring during verification
+ring-wrong-color=f38ba8    # Red ring for wrong password
+
+# Separator color (line between ring sections)  
+separator-color=00000000  # Transparent
+
+# Text colors
+text-color=cdd6f4        # Text - main text color
+text-clear-color=1e1e2e  # Text when cleared (dark on light)
+text-caps-lock-color=1e1e2e  # Text for caps lock
+text-ver-color=1e1e2e    # Text during verification  
+text-wrong-color=1e1e2e  # Text for wrong password
+
+# Layout and appearance
+show-failed-attempts
+show-keyboard-layout
+font="JetBrainsMonoNL NFP"
+font-size=14
+indicator-radius=120
+indicator-thickness=10
+line-uses-inside
+
+# Effects
+effect-blur=7x5
+effect-vignette=0.5:0.5
+fade-in=0.2
+
+# Disable the default background
+image=/dev/null
