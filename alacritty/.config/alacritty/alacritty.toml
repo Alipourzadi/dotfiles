@@ -1,38 +1,25 @@
-[general]
-import = [ "~/.config/alacritty/catppuccin-mocha.toml" ]
-
-live_config_reload = true
-working_directory = "None"
-
 [env]
 TERM = "xterm-256color"
 
-[window]
-opacity = 0.92
+[general]
+live_config_reload = true
+working_directory = "None"
+import = [ "~/.config/alacritty/catppuccin-mocha.toml" ]
 
-[window.padding]
-x = 20
-y = 20
+[window]
+padding = { x = 20, y = 20 }
 
 [font]
-size = 14
-offset = { x = 0, y = 2 }
-glyph_offset = { x = 0, y = 1 }
-normal = { family = "JetBrainsMono NFP Light" }
-bold = { family = "JetBrainsMono NFP Light" }
-italic = { family = "JetBrainsMono NFP Light" }
-bold_italic = { family = "JetBrainsMono NFP Light" }
+size = 15
+normal = { family = "FiraCode Nerd Font Propo" }
+bold = { family = "FiraCode Nerd Font Propo" }
+italic = { family = "FiraCode Nerd Font Propo" }
+bold_italic = { family = "FiraCode Nerd Font Propo" }
 
 [cursor]
 unfocused_hollow = true
-
-[cursor.style]
-blinking = "On"
-shape = "Block"
-
-[cursor.vi_mode_style]
-blinking = "On"
-shape = "Block"
+style = { blinking = "On", shape = "Block" }
+vi_mode_style = { blinking = "On", shape = "Block" }
 
 [selection]
 save_to_clipboard = false
