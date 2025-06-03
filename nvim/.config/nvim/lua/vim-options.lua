@@ -28,12 +28,11 @@ g.mapleader = " "
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("n", "<C-a>", "gg<S-v>G")
-map("n", "<C-z>", "<Nop>")
 
 --- copy to clipboard
-map("n", "<leader>Y", "+Y", { silent = true })
-map("v", "<leader>y", "+y", { silent = true })
-map("n", "<leader>y", "+y", { silent = true })
+map("n", "<leader>Y", '"+Y', { silent = true })
+map("v", "<leader>y", '"+y', { silent = true })
+map("n", "<leader>y", '"+y', { silent = true })
 
 -- toggle highlight
 map("n", "<leader>h", "<cmd>nohlsearch<CR>", { silent = true })

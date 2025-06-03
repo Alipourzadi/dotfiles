@@ -15,9 +15,13 @@ return {
 				typescriptreact = { "prettierd" },
 				python = { "black" },
 				json = { "prettierd" },
+				jsonc = { "prettierd" },
 				toml = { "pyproject-fmt" },
 				html = { "prettierd" },
 				css = { "prettierd" },
+				sh = { "beautysh" },
+				zsh = { "beautysh" },
+				astro = { "prettierd" },
 			},
 		})
 		vim.keymap.set("n", "<C-s>", ":w<CR>", { silent = true })

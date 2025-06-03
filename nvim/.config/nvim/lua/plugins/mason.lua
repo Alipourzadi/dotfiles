@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "tailwindcss", "astro", "pyright" },
+				ensure_installed = { "lua_ls", "tailwindcss", "astro", "pyright", "bashls" },
 			})
 		end,
 	},
@@ -22,6 +22,7 @@ return {
 			lspconfig.tailwindcss.setup({})
 			lspconfig.astro.setup({})
 			lspconfig.pyright.setup({})
+			lspconfig.bashls.setup({})
 		end,
 	},
 }
