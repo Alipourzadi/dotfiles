@@ -11,7 +11,6 @@ set $menu dmenu_path | wmenu | xargs swaymsg exec --
 # Notification Daemon
 exec swaync
 
-
 include /etc/sway/config-vars.d/*
 
 set $ws1 1:T
@@ -82,7 +81,6 @@ focus_on_window_activation smart
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
-
 
 #######################
 ##    Keybindings    ##
@@ -205,6 +203,9 @@ bindsym XF86MonBrightnessDown exec light -U 5; exec notify-send 'brightness down
 ## Essential
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+n exec swaync-client -t -sw
+bindsym $mod+x exec brave-browser
+bindsym $mod+t exec telegram-desktop
+bindsym $mod+z exec hiddify
 
 # Fullscreen screenshot
 bindsym Print exec grim ~/Pictures/screenshot-$(date +%s).png | wl-copy
@@ -220,7 +221,6 @@ for_window [class="^.*"] border pixel 0
 # for_window [class="confirm"] floating enable
 # for_window [class="dialog"] floating enable
 # for_window [class="error"] floating enable
-
 
 #################
 ##    Modes    ##
@@ -255,7 +255,6 @@ exec_always {
     resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock'
 }
-
 
 bar {
      swaybar_command waybar
