@@ -6,7 +6,7 @@ local api = vim.api
 local map = vim.keymap.set
 
 opt.number = true
-opt.relativenumber = false
+opt.relativenumber = true
 opt.numberwidth = 3
 opt.tabstop = 2
 opt.shiftwidth = 2

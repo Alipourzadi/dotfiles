@@ -18,7 +18,9 @@ return {
 				},
 				buftypes = { "terminal", "nofile", "telescope" },
 			},
-			indent = {},
+			indent = {
+				char = "│",
+			},
 			scope = { enabled = false },
 		})
 	end,

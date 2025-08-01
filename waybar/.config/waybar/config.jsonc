@@ -1,6 +1,6 @@
 {
   "layer": "top",
-  "position": "bottom",
+  "position": "top",
   "height": 35,
 
   "modules-left": [
@@ -88,7 +88,7 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}{capacity: >3}%",
+    "format": "{icon} {capacity: >3}%",
     "format-icons": ["", "", "", "", ""]
   },
 

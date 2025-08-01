@@ -29,12 +29,12 @@ set $ws10 10:S
 #####################
 
 hide_edge_borders none
-font pango:DejaVuSansM Nerd Font Propo 8
-output * bg $HOME/.config/sway/wallhaven-5ydwp7.jpg fill
+font pango:DejaVuSansM Nerd Font Propo 10
+output * bg $HOME/.config/sway/h.jpg fill
 
 # Gaps
-gaps outer 10
-gaps inner 10
+gaps outer 0
+gaps inner 0
 
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
@@ -218,9 +218,9 @@ bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%s).pn
 ############################
 
 for_window [class="^.*"] border pixel 0
-# for_window [class="confirm"] floating enable
-# for_window [class="dialog"] floating enable
-# for_window [class="error"] floating enable
+for_window [class="confirm"] floating disable
+for_window [class="dialog"] floating disable
+for_window [class="error"] floating disable
 
 #################
 ##    Modes    ##
