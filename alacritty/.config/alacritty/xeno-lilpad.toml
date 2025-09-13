@@ -1,0 +1,38 @@
+# Alacritty TOML config snippet
+# Theme: Base + Accent
+
+[colors.primary]
+background = "#1E1E1E"
+foreground = "#D0D0D0" # light gray for readability
+
+[colors.cursor]
+text = "#1E1E1E"
+cursor = "#8CBE8C"
+
+[colors.selection]
+text = "#1E1E1E"
+background = "#8CBE8C"
+
+[colors.normal]
+black = "#1E1E1E"
+red = "#BE8C8C"
+green = "#8CBE8C"
+yellow = "#BEBC8C"
+blue = "#8CA8BE"
+magenta = "#BE8CBE"
+cyan = "#8CBEBE"
+white = "#D0D0D0"
+
+[colors.bright]
+black = "#3A3A3A"
+red = "#E5A0A0"
+green = "#A8D8A8"
+yellow = "#E5E2A0"
+blue = "#A0BDE5"
+magenta = "#E5A0E5"
+cyan = "#A0E5E2"
+white = "#FFFFFF"
+
+[colors.hints]
+start = { foreground = "#1E1E1E", background = "#8CBE8C" }
+end = { foreground = "#1E1E1E", background = "#8CBE8C" }

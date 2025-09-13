@@ -4,19 +4,21 @@ working_directory = "None"
 import = [ "~/.config/alacritty/catppuccin-mocha.toml" ]
 
 [window]
-padding = { x = 10, y = 10 }
+padding = { x = 8, y = 8 }
+dynamic_padding = true
+# opacity = 
 
 [font]
 size = 14
-normal = { family = "0xProto Nerd Font Propo" }
-bold = { family = "0xProto Nerd Font Propo" }
-italic = { family = "0xProto Nerd Font Propo" }
-bold_italic = { family = "0xProto Nerd Font Propo" }
+normal = { family = "JetBrains Mono NF" }
+bold = { family = "JetBrains Mono NF" }
+italic = { family = "JetBrains Mono NF" }
+bold_italic = { family = "JetBrains Mono NF" }
 
 [cursor]
 unfocused_hollow = true
-style = { blinking = "On", shape = "Block" }
-vi_mode_style = { blinking = "On", shape = "Block" }
+style = { blinking = "Off", shape = "Block" }
+vi_mode_style = { blinking = "Off", shape = "Block" }
 
 [selection]
 save_to_clipboard = true
