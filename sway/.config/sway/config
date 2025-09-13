@@ -29,12 +29,12 @@ set $ws10 10:S
 #####################
 
 hide_edge_borders none
-font pango:DejaVuSansM Nerd Font Propo 10
-output * bg $HOME/.config/sway/h.jpg fill
+font pango:JetBrainsMonoNL NFP 10
+output * bg $HOME/.config/sway/sky.jpg fill
 
 # Gaps
 gaps outer 0
-gaps inner 0
+gaps inner 8
 
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
@@ -71,6 +71,10 @@ client.urgent            $peach    $base  $peach   $overlay0  $peach
 client.placeholder       $overlay0 $base  $text    $overlay0  $overlay0
 client.background        $base
 
+title_align center
+titlebar_padding 1
+titlebar_border_thickness 0
+
 ####################
 ##    Behavior    ##
 ####################
@@ -94,9 +98,17 @@ input type:keyboard {
 }
 
 input "type:touchpad" {
-  dwt enabled
-  tap enabled
-  middle_emulation enabled
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    click_method clickfinger
+    scroll_method two_finger
+    pointer_accel 0.3
+}
+
+input "type:pointer" {
+    pointer_accel 0.2
 }
 
 bindsym $mod+Return exec $term
@@ -105,12 +117,6 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
 
 ## Log Out, Shutdown, Reboot
-bindsym $mod+Shift+e exec swaynag -t warning "Terminus" \
--m "Exit sway? This will end your current Wayland session." \
--B "Exit now" "swaymsg exit" \
--B "Suspend" "systemctl suspend && pkill swaynag" \
--B "Reboot" "systemctl reboot" \
--B "Power off" "systemctl poweroff" \
 bindsym $mod+Shift+p exec "systemctl poweroff"
 bindsym $mod+Shift+r exec "systemctl reboot"
 bindsym $mod+Shift+B exec swaylock
@@ -206,12 +212,11 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
 bindsym $mod+x exec brave-browser
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+z exec hiddify
+# Better screenshot bindings (your current ones have a pipe issue)
+bindsym Print exec grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png && notify-send "Screenshot saved"
+bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png && notify-send "Area screenshot saved"
+bindsym Ctrl+Print exec grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot copied to clipboard"
 
-# Fullscreen screenshot
-bindsym Print exec grim ~/Pictures/screenshot-$(date +%s).png | wl-copy
-
-# Area screenshot
-bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%s).png | wl-copy
 
 ############################
 ##    Windows Behavior    ##
@@ -221,6 +226,28 @@ for_window [class="^.*"] border pixel 0
 for_window [class="confirm"] floating disable
 for_window [class="dialog"] floating disable
 for_window [class="error"] floating disable
+
+# Better floating rules
+for_window [app_id="pavucontrol"] floating enable, sticky enable
+for_window [app_id="blueman-manager"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [title="Picture-in-Picture"] floating enable, sticky enable
+for_window [app_id="mpv"] floating enable
+for_window [app_id="imv"] floating enable
+for_window [title=".*[Ss]haring.*"] floating enable
+
+# Inhibit idle for fullscreen apps
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
+
+assign [app_id="wezterm"] workspace $ws1
+assign [app_id="thunar"] workspace $ws3
+assign [app_id="brave-browser"] workspace $ws2
+assign [app_id="telegram-desktop"] workspace $ws8
+assign [app_id="vlc"] workspace $ws4
+assign [app_id="hiddify"] workspace $ws5
+assign [app_id="github-desktop"] workspace $ws6
+assign [app_id="figma-linux"] workspace $ws4
 
 #################
 ##    Modes    ##
@@ -249,12 +276,23 @@ mode "resize" {
 #####################
 
 exec_always {
-  swayidle -w \
-    timeout 300 'swaylock' \
-    timeout 600 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock'
+    pkill swayidle
+    swayidle -w \
+        timeout 300 'swaylock -f -c 000000' \
+        timeout 600 'swaymsg "output * power off"' \
+        resume 'swaymsg "output * power on"' \
+        before-sleep 'swaylock -f -c 000000'
 }
+
+# Additional useful autostart programs
+exec wl-paste -t text --watch clipman store
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec nm-applet --indicator
+exec blueman-applet
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+exec_always --no-startup-id "/home/excalibur/.local/bin/flashfocus"
 
 bar {
      swaybar_command waybar
