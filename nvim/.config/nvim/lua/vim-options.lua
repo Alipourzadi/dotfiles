@@ -7,7 +7,6 @@ local map = vim.keymap.set
 
 opt.number = true
 opt.relativenumber = true
-opt.numberwidth = 3
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.softtabstop = 2
@@ -19,10 +18,20 @@ opt.swapfile = false
 opt.cursorline = true
 opt.termguicolors = true
 opt.termbidi = true
-opt.linespace = 0
+opt.signcolumn = "number"
+opt.statuscolumn = "%s %l %r "
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function()
+		if vim.bo.filetype == "NvimTree" then
+			vim.wo.statuscolumn = ""
+		end
+	end,
+})
 
 -- LEADER KEY
 g.mapleader = " "
+g.signcolomn = number
 
 -- KEY MAPPINGS
 map("n", "n", "nzzzv")
@@ -51,9 +60,9 @@ map("n", "<c-h>", "<cmd>wincmd h<CR>", { silent = true })
 map("n", "<c-l>", "<cmd>wincmd l<CR>", { silent = true })
 
 -- DIAGNOSTICS
-map("n", "<leader>d]", vim.diagnostic.goto_next, { noremap = true, silent = true })
-map("n", "<leader>d[", vim.diagnostic.goto_prev, { noremap = true, silent = true })
-map("n", "<leader>do", vim.diagnostic.open_float, { noremap = true, silent = true })
+map("n", "<leader>d]", vim.diagnostic.goto_next)
+map("n", "<leader>d[", vim.diagnostic.goto_prev)
+map("n", "<leader>do", vim.diagnostic.open_float)
 
 -- Sort lines by width
 map("v", "<leader>zz", ":!awk '{ print length(), $0 | \"sort -n | cut -d\\  -f2-\" }'<CR>")
@@ -84,11 +93,16 @@ map("n", "<leader>xb", function()
 	end
 end, { silent = true })
 
--- JS LOG MACRO (Lazy)
+-- JS LOG MACRO (Styled)
 local function setup_js_log_macro()
 	g.js_config_loaded = true
 	local esc = api.nvim_replace_termcodes("<Esc>", true, true, true)
-	fn.setreg("l", "viwyoconsole.log('" .. esc .. "pa :'," .. esc .. "pa)")
+	fn.setreg(
+		"l",
+		"viwyoconsole.log('%c LOG ', 'background: linear-gradient(90deg, orange, yellow); color: black; font-weight: bold; padding: 2px 6px; border-radius: 4px;', "
+			.. esc
+			.. "pa)"
+	)
 end
 
 api.nvim_create_autocmd("FileType", {
@@ -100,3 +114,7 @@ api.nvim_create_autocmd("FileType", {
 	end,
 	group = api.nvim_create_augroup("JSLogMacro", { clear = true }),
 })
+
+if vim.g.neovide then
+	vim.o.guifont = "JetBrainsMono NFP Medium:14" -- text below applies for VimScript
+end

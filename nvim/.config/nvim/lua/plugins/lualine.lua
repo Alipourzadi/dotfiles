@@ -40,7 +40,7 @@ return {
 				component_separators = "",
 				section_separators = "",
 				globalstatus = true,
-				theme = "auto",
+				theme = "catppuccin",
 				-- theme = {
 				-- 	normal = { c = { fg = colors.fg, bg = colors.bg } },
 				-- 	inactive = { c = { fg = colors.fg, bg = colors.bg } },

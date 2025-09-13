@@ -2,6 +2,7 @@ return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
+		"MunifTanjim/nui.nvim",
 	},
 	config = function()
 		local function my_on_attach(bufnr)
@@ -20,11 +21,12 @@ return {
 			on_attach = my_on_attach,
 			hijack_cursor = true,
 			view = {
-				width = 50,
+				width = 40,
 				side = "left",
 				signcolumn = "no",
 			},
 			renderer = {
+				highlight_diagnostics = "name",
 				indent_markers = { enable = true },
 				icons = {
 					git_placement = "right_align",
@@ -32,15 +34,16 @@ return {
 						file = true,
 						folder = true,
 						folder_arrow = true,
-						git = true,
+						git = false,
 					},
 					glyphs = {
 						folder = {
-							default = "󰉋",
-							open = "",
-							empty = "",
-							arrow_closed = "",
-							arrow_open = "",
+							default = "",
+							open = "",
+							empty = "+",
+							empty_open = "-",
+							arrow_closed = "",
+							arrow_open = "",
 						},
 						git = {
 							unstaged = "",
@@ -83,5 +86,13 @@ return {
 
 		-- Toggle tree with <C-n>
 		vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })
+
+		-- Increase NvimTree width by 5
+		vim.keymap.set("n", "<C-Right>", ":NvimTreeResize +5<CR>", { silent = true, desc = "Increase NvimTree width" })
+
+		-- Decrease NvimTree width by 5
+		vim.keymap.set("n", "<C-Left>", ":NvimTreeResize -5<CR>", { silent = true, desc = "Decrease NvimTree width" })
+
+		vim.cmd([[highlight NvimTreeErrorFile guifg=#ff0000 gui=bold]])
 	end,
 }
