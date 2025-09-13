@@ -1,5 +1,5 @@
 /* === Catppuccin Mocha Palette === */
-@define-color base      #1e1e2e;
+@define-color base      #11111b;
 @define-color mantle    #181825;
 @define-color crust     #11111b;
 
@@ -31,14 +31,15 @@
 @define-color rosewater #f5e0dc;
 
 * {
-  font-family: "DejaVuSansM Nerd Font Propo", monospace;
   font-size: 16px;
   border: none;
   box-shadow: none;
+  margin: 2px;
 }
 
 window#waybar {
   background-color: @base;
+  font-family: "JetBrainsMonoNL NFP SemiBold";
   color: @text;
 }
 
@@ -49,22 +50,18 @@ window#waybar {
 
 #workspaces {
   background: transparent;
+  font-size: 24px;
 }
 
 #workspaces button {
   background: transparent;
   color: @text;
-  margin: 0 3px;
-  padding: 0 10px;
+  padding: 0px 10px;
   border-radius: 0px;
-  border-bottom: 2px solid transparent;
 }
 
 #workspaces button.focused {
-  background: transparent;
-  border-bottom: 2px solid @mauve;
-  border-radius: 0px;
-  color: @text;
+  color: @peach;
 }
 
 #cpu,
@@ -78,11 +75,22 @@ window#waybar {
 #network,
 #bluetooth,
 #battery {
-  background-color: @mantle;
-  margin: 4px 2px;
-  border-radius: 6px;
-  padding: 0 10px;
-  min-width: 65px;
+  border-radius: 0px;
+  padding: 4px 10px;
+  min-width: 75px;
+}
+
+#clock {
+  background: linear-gradient(135deg, @yellow 0%, #fda085 100%);
+  color: @crust;
+  border-radius: 0px;
+  font-family: "JetBrains Mono ExtraBold", monospace;
+}
+
+#battery {
+  background: linear-gradient(135deg, @teal 0%, @lavender 100%);
+  color: @crust;
+  border-radius: 0px;
 }
 
 #tray {

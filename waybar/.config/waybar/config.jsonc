@@ -1,7 +1,12 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 35,
+  "spacing": 2,
+
+  "margin-left": 8,
+  "margin-right": 8,
+  "margin-top": 8,
+  "margin-bottom": 0,
 
   "modules-left": [
     "clock",
@@ -9,7 +14,7 @@
     "temperature",
     "cpu",
     "memory",
-    "tray"
+    "tray",
   ],
   "modules-center": ["sway/workspaces"],
   "modules-right": [
@@ -17,27 +22,27 @@
     "pulseaudio",
     "network",
     "bluetooth",
-    "battery"
+    "battery",
   ],
 
   "sway/workspaces": {
     "format": "{name}",
-    "disable-scroll": true
+    "disable-scroll": true,
   },
 
   "clock": {
-    "format": "{:%H:%M}",
-    "tooltip-format": "{:%A, %d %B %Y | %H:%M:%S}"
+    "format": "<span font='14'>󰥔</span> {:%H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y | %H:%M:%S}",
   },
 
   "cpu": {
     "format": " {usage}%",
-    "tooltip": false
+    "tooltip": false,
   },
 
   "memory": {
     "format": " {}%",
-    "tooltip": false
+    "tooltip": false,
   },
 
   "temperature": {
@@ -47,25 +52,25 @@
     "tooltip": false,
     "states": {
       "warning": 65,
-      "critical": 80
-    }
+      "critical": 80,
+    },
   },
 
   "pulseaudio": {
     "format": "󰕾 {volume}%",
     "scroll-step": 5,
     "format-muted": "󰖁 muted",
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol",
   },
 
   "backlight": {
     "device": "intel_backlight",
     "format": "󰃠 {percent}%",
-    "scroll-step": 5
+    "scroll-step": 5,
   },
 
   "sway/language": {
-    "format": " {}"
+    "format": " {}",
   },
 
   "network": {
@@ -73,27 +78,26 @@
     "format-ethernet": "󰈀 {ifname}",
     "format-disconnected": "󰖪",
     "tooltip-format": "IP: {ipaddr}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
-    "on-click": "nm-connection-editor"
+    "on-click": "nm-connection-editor",
   },
 
   "bluetooth": {
     "format": "󰂯 {status}",
     "format-connected": "󰂱 {device_alias}",
     "format-disabled": "󰂲",
-    "on-click": "blueman-manager"
+    "on-click": "blueman-manager",
   },
 
   "battery": {
     "states": {
       "warning": 30,
-      "critical": 15
+      "critical": 15,
     },
-    "format": "{icon} {capacity: >3}%",
-    "format-icons": ["", "", "", "", ""]
+    "format": " {capacity: >3}%",
   },
 
   "tray": {
     "icon-size": 16,
-    "spacing": 10
-  }
+    "spacing": 12,
+  },
 }
