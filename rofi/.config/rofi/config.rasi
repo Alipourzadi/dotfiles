@@ -1,9 +1,9 @@
 configuration {
     modi:                       "drun";
-    show-icons:                 true;
-    display-drun:               "Run";
+    show-icons:                 false;
+    display-drun:               ">>";
     icon-theme:                 "Oranchelo";
-    terminal:                   "kitty";
+    terminal:                   "alacritty";
     display-run:                "";
     display-filebrowser:        "";
     display-window:             "";
@@ -37,13 +37,13 @@ configuration {
     alternate-urgent-foreground: var(background);
     alternate-active-background: var(active);
     alternate-active-foreground: var(background);
-    font: "CaskaydiaCove NF 10";
+    font: "JetBrainsMono NFP Medium 12";
 }
 
 /*****----- Main Window -----*****/
 window {
     /* properties for window widget */
-    transparency:                "real";
+    transparency:                10%;
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
@@ -70,7 +70,7 @@ mainbox {
     border-radius:               15px;
     border-color:                #6f91c9;
     background-color:            transparent;
-    transparency :               "real";
+    transparency:                10%;
     children:                    [ "inputbar", "message", "listview" ];
 }
 
@@ -97,7 +97,7 @@ prompt {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "⛛";
+    str:                         "";
     text-color:                  @selected;
 }
 
