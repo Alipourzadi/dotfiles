@@ -28,6 +28,7 @@ return {
 			renderer = {
 				highlight_diagnostics = "name",
 				indent_markers = { enable = true },
+				highlight_git = true, -- makes git ignored files use highlights
 				icons = {
 					git_placement = "right_align",
 					show = {

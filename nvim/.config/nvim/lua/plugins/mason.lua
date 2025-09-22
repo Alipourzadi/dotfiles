@@ -14,20 +14,19 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "tailwindcss", "astro", "pyright", "bashls" },
+				ensure_installed = { "lua_ls", "tailwindcss", "astro", "pyright", "bashls", "ts_ls" },
 			})
 		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			local lspconfig = require("lspconfig")
-
-			lspconfig.lua_ls.setup({})
-			lspconfig.tailwindcss.setup({})
-			lspconfig.astro.setup({})
-			lspconfig.pyright.setup({})
-			lspconfig.bashls.setup({})
+			vim.lsp.config("lua_ls", {})
+			vim.lsp.config("ts_ls", {})
+			vim.lsp.config("tailwindcss", {})
+			vim.lsp.config("astro", {})
+			vim.lsp.config("pyright", {})
+			vim.lsp.config("bashls", {})
 		end,
 	},
 }
