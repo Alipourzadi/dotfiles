@@ -4,7 +4,7 @@ return {
 		require("fidget").setup({
 			notification = {
 				window = {
-					winblend = 100,
+					winblend = 0,
 					border = "rounded",
 				},
 			},
