@@ -21,6 +21,7 @@ return {
 				css = { "prettierd" },
 				sh = { "beautysh" },
 				zsh = { "beautysh" },
+				ejs = { "prettier" },
 				astro = { "prettierd" },
 			},
 		})
