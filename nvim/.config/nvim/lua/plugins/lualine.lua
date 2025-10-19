@@ -1,22 +1,24 @@
 return {
 	"nvim-lualine/lualine.nvim",
-
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
+		-- Eviline config for lualine
+		-- Author: shadmansaleh
+		-- Credit: glepnir
 		local lualine = require("lualine")
 
 		local colors = {
-			bg = "#24273A", -- Base
-			fg = "#CAD3F5", -- Text
-			yellow = "#EED49F", -- Yellow
-			cyan = "#8BD5CA", -- Teal
-			darkblue = "#3B4261", -- Surface2
-			green = "#A6DA95", -- Green
-			orange = "#F5A97F", -- Peach
-			violet = "#C6A0F6", -- Mauve
-			magenta = "#F5BDE6", -- Pink
-			blue = "#8AADF4", -- Blue
-			red = "#ED8796", -- Red
+			bg = "#202328",
+			fg = "#bbc2cf",
+			yellow = "#ECBE7B",
+			cyan = "#008080",
+			darkblue = "#081633",
+			green = "#98be65",
+			orange = "#FF8800",
+			violet = "#a9a1e1",
+			magenta = "#c678dd",
+			blue = "#51afef",
+			red = "#ec5f67",
 		}
 
 		local conditions = {
@@ -40,11 +42,15 @@ return {
 				component_separators = "",
 				section_separators = "",
 				globalstatus = true,
-				theme = "catppuccin",
-				-- theme = {
-				-- 	normal = { c = { fg = colors.fg, bg = colors.bg } },
-				-- 	inactive = { c = { fg = colors.fg, bg = colors.bg } },
-				-- },
+
+				theme = "auto",
+				--[[ theme = {
+					-- We are going to use lualine_c an lualine_x as left and
+					-- right section. Both are highlighted by c theme .  So we
+					-- are just setting default looks o statusline
+					normal = { c = { fg = colors.fg, bg = colors.bg } },
+					inactive = { c = { fg = colors.fg, bg = colors.bg } },
+				}, ]]
 			},
 			sections = {
 				-- these are to remove the defaults
@@ -88,7 +94,7 @@ return {
 		ins_left({
 			-- mode component
 			function()
-				return ""
+				return ""
 			end,
 			color = function()
 				-- auto change color according to neovims mode
@@ -154,26 +160,26 @@ return {
 			end,
 		})
 
-		-- ins_left({
-		-- 	-- Lsp server name .
-		-- 	function()
-		-- 		local msg = "No Active Lsp"
-		-- 		local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
-		-- 		local clients = vim.lsp.get_clients()
-		-- 		if next(clients) == nil then
-		-- 			return msg
-		-- 		end
-		-- 		for _, client in ipairs(clients) do
-		-- 			local filetypes = client.config.filetypes
-		-- 			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-		-- 				return client.name
-		-- 			end
-		-- 		end
-		-- 		return msg
-		-- 	end,
-		-- 	icon = " LSP:",
-		-- 	color = { fg = "#ffffff", gui = "bold" },
-		-- })
+		ins_left({
+			-- Lsp server name .
+			function()
+				local msg = "No Active Lsp"
+				local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+				local clients = vim.lsp.get_clients()
+				if next(clients) == nil then
+					return msg
+				end
+				for _, client in ipairs(clients) do
+					local filetypes = client.config.filetypes
+					if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+						return client.name
+					end
+				end
+				return msg
+			end,
+			icon = " LSP:",
+			color = { fg = "#ffffff", gui = "bold" },
+		})
 
 		-- Add components to right sections
 		ins_right({
@@ -198,6 +204,7 @@ return {
 
 		ins_right({
 			"diff",
+			-- Is it me or the symbol for modified us really weird
 			symbols = { added = " ", modified = "󰝤 ", removed = " " },
 			diff_color = {
 				added = { fg = colors.green },
@@ -215,6 +222,7 @@ return {
 			padding = { left = 1 },
 		})
 
+		-- Now don't forget to initialize lualine
 		lualine.setup(config)
 	end,
 }
