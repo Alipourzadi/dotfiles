@@ -1,46 +1,54 @@
 -- return {
--- 	"kyza0d/xeno.nvim",
--- 	lazy = false,
--- 	priority = 1000,
--- 	opts = {
--- 		transparent = false,
--- 		contrast = 0.1,
--- 	},
--- 	config = function(_, opts)
--- 		local xeno = require("xeno")
---
--- 		xeno.config(opts)
---
--- 		-- Create your custom theme
--- 		-- xeno.new_theme("xeno-lilypad", {
--- 		-- 	base = "#1E1E1E",
--- 		-- 	accent = "#8CBE8C",
--- 		-- })
--- 		xeno.new_theme("xeno-golden-hour", {
--- 			base = "#11111b",
--- 			accent = "#f5e0dc",
--- 			contrast = 0.1,
+-- 	"gthelding/monokai-pro.nvim",
+-- 	config = function()
+-- 		require("monokai-pro").setup({
+-- 			filter = "ristretto",
+-- 			override = function()
+-- 				return {
+-- 					NonText = { fg = "#948a8b" },
+-- 					MiniIconsGrey = { fg = "#948a8b" },
+-- 					MiniIconsRed = { fg = "#fd6883" },
+-- 					MiniIconsBlue = { fg = "#85dacc" },
+-- 					MiniIconsGreen = { fg = "#adda78" },
+-- 					MiniIconsYellow = { fg = "#f9cc6c" },
+-- 					MiniIconsOrange = { fg = "#f38d70" },
+-- 					MiniIconsPurple = { fg = "#a8a9eb" },
+-- 					MiniIconsAzure = { fg = "#a8a9eb" },
+-- 					MiniIconsCyan = { fg = "#85dacc" }, -- same value as MiniIconsBlue for consistency
+-- 				}
+-- 			end,
 -- 		})
---
--- 		vim.cmd("colorscheme xeno-golden-hour")
+-- 		vim.cmd([[colorscheme monokai-pro]])
 -- 	end,
 -- }
+
 return {
+	"erl-koenig/theme-hub.nvim",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		-- Optional: for themes that use lush (will be notified if a theme requires it)
+		"rktjmp/lush.nvim",
+	},
+	config = function()
+		require("theme-hub").setup({
+			-- Configuration options (see below)
+			persistent = true,
+		})
+	end,
+}
+--[[ return {
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
-				color_overrides = {
-					mocha = { base = "#11111b", mantle = "#11111b", crust = "#11111b" },
-				},
 				flavour = "mocha", -- latte, frappe, macchiato, mocha
 				background = { -- :h background
 					light = "latte",
 					dark = "mocha",
 				},
-				transparent_background = false, -- disables setting the background color.
+				transparent_background = true, -- disables setting the background color.
 				show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
 				term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
 				dim_inactive = {
@@ -95,4 +103,4 @@ return {
 			vim.cmd("colorscheme catppuccin-mocha")
 		end,
 	},
-}
+} ]]
